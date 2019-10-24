@@ -21,10 +21,13 @@ class SiteController extends \yii\web\Controller
         ];
     }
 
-    public function beforeAction($action)
+    public function actionIndex()
     {
-        $this->layout = Yii::$app->user->isGuest || !Yii::$app->user->can('loginToBackend') ? 'base' : 'common';
+        return $this->render('index');
+    }
 
-        return parent::beforeAction($action);
+    public function actionFileUpload()
+    {
+        var_dump($_FILES);die;
     }
 }

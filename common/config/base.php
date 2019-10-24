@@ -121,6 +121,12 @@ $config = [
             ]
         ],
 
+        'galleryStorage' => [
+            'class' => \common\components\galleryStorage\Storage::class,
+            'baseUrl' => '@storageUrl/source',
+            'basePath' => '@storage/web/source'
+        ],
+
         'keyStorage' => [
             'class' => common\components\keyStorage\KeyStorage::class
         ],

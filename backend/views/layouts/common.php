@@ -143,6 +143,11 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
                         'options' => ['class' => 'header'],
                     ],
                     [
+                        'label' => Yii::t('backend', 'Gallery'),
+                        'icon' => '<i class="fa fa-bar-chart-o"></i>',
+                        'url' => ['/gallery/index'],
+                    ],
+                    [
                         'label' => Yii::t('backend', 'Timeline'),
                         'icon' => '<i class="fa fa-bar-chart-o"></i>',
                         'url' => ['/timeline-event/index'],
