@@ -93,7 +93,7 @@ class PhotoGallery extends ActiveRecord
             case (stristr($this->type, 'application')) :
                 return 'object';
             default :
-                return 'image';
+                return 'object';
         }
 
     }
