@@ -25,9 +25,9 @@ use yii\helpers\Url;
         'options' => [
             'multiple' => true,
             'class' => 'fileInput',
-//            'accept' =>'video/*'
         ],
         'deleteUrl' =>  Url::to(['/gallery/delete-gallery']),
+        'sortUrl' => Url::to(['gallery/sort-gallery']),
         'pluginOptions' => [
             'uploadUrl' => Url::to(['/gallery/upload-gallery']),
             'showRemove' => false,
@@ -41,5 +41,30 @@ use yii\helpers\Url;
     </div>
 
     <?php ActiveForm::end(); ?>
+    <div id="openModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-sm btn-kv btn-default btn-outline-secondary btn-close" data-dismiss="modal" aria-label="Закрыть">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                    <h4 class="modal-title" id="gridModalLabel">Заголовок модального окна</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- основное содержимое (тело) модального окна -->
+                    <div class="container-fluid">
+                        <!-- Контейнер, в котором можно создавать классы системы сеток -->
+                        <div class="row">
+                            <div class="col-md-6">...</div>
+                            <div class="col-md-6">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

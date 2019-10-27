@@ -63,6 +63,7 @@ class Gallery extends ActiveRecord
             'announcement' => Yii::t('app', 'Анонс'),
             'created_by' => Yii::t('app', 'Created By'),
             'created_at' => Yii::t('app', 'Created At'),
+            'gallery' => Yii::t('app', 'Gallery'),
         ];
     }
 }

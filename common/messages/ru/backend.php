@@ -164,4 +164,5 @@ return [
     'i18n' => 'I18N',
     'i18n Message' => 'Перевод',
     'i18n Source Message' => 'Текст',
+    'Gallery' => 'Галерея',
 ];

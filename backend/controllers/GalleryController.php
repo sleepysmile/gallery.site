@@ -3,7 +3,10 @@
 namespace backend\controllers;
 
 use common\actions\DeleteGalleryAction;
+use common\actions\SortableGalleryAction;
 use common\actions\UploadGalleryAction;
+use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
 use Yii;
 use common\models\Gallery;
 use backend\models\search\GallerySearch;
@@ -22,10 +25,30 @@ class GalleryController extends Controller
         return [
             'upload-gallery' => [
                 'class' => UploadGalleryAction::class,
-                'deleteRoute' => Url::to(['gallery/delete-gallery'])
+                'deleteRoute' => Url::to(['gallery/delete-gallery']),
+                'versionImage' => [
+                    'small' => function (ImageInterface $img) {
+                        return $img
+                            ->copy()
+                            ->thumbnail(new Box(100, 100));
+                    },
+                    'medium' => function (ImageInterface $img) {
+                        return $img
+                            ->copy()
+                            ->thumbnail(new Box(900, 900));
+                    },
+                    'preview' => function (ImageInterface $img) {
+                        return $img
+                            ->copy()
+                            ->thumbnail(new Box(300, 300));
+                    }
+                ]
             ],
             'delete-gallery' => [
                 'class' => DeleteGalleryAction::class
+            ],
+            'sort-gallery' => [
+                'class' => SortableGalleryAction::class
             ]
         ];
     }

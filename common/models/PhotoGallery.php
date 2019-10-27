@@ -2,9 +2,9 @@
 
 namespace common\models;
 
+use arogachev\sortable\behaviors\numerical\ContinuousNumericalSortableBehavior;
 use Yii;
 use yii\db\ActiveRecord;
-use yii\helpers\FileHelper;
 
 /**
  * This is the model class for table "photo_gallery".
@@ -21,6 +21,9 @@ use yii\helpers\FileHelper;
  * @property string $dirPath
  * @property string $iPObject
  * @property string $templateFile
+ * @property int $sort [int(11)]
+ * @property string $extension [varchar(255)]
+ * @property string extensionDot
  */
 class PhotoGallery extends ActiveRecord
 {
@@ -32,14 +35,27 @@ class PhotoGallery extends ActiveRecord
         return '{{%photo_gallery}}';
     }
 
+    public function behaviors()
+    {
+        return [
+            'sortable' => [
+                'class' => ContinuousNumericalSortableBehavior::class,
+                'scope' => function ($model) {
+                    $tableName = $model->tableName();
+                    return $model->find()->andWhere(["{$tableName}.[[gallery_id]]" => $model->gallery_id]);
+                },
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['gallery_id', 'file_size'], 'integer'],
-            [['base_path', 'path', 'type', 'file_name'], 'string', 'max' => 255],
+            [['gallery_id', 'file_size', 'sort'], 'integer'],
+            [['base_path', 'path', 'type', 'file_name', 'extension'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,22 +70,28 @@ class PhotoGallery extends ActiveRecord
             'path' => Yii::t('app', 'Path'),
             'type' => Yii::t('app', 'Type'),
             'gallery_id' => Yii::t('app', 'Gallery ID'),
+            'sort' => Yii::t('app', 'Sort'),
         ];
     }
 
     public function getAbsolutePath()
     {
-        return $this->base_path . $this->path . $this->file_name;
+        return $this->base_path . $this->path . $this->file_name . $this->extensionDot;
     }
 
     public function getFilePath()
     {
-        return $this->path . $this->file_name;
+        return $this->path . $this->file_name  . $this->extensionDot;
     }
 
     public function getDirPath()
     {
         return $this->path;
+    }
+
+    protected function getExtensionDot()
+    {
+        return '.' . $this->extension;
     }
 
     /**
@@ -88,14 +110,17 @@ class PhotoGallery extends ActiveRecord
                 return 'video';
             case (stristr($this->type, 'pdf')) :
                 return 'pdf';
-            case (stristr($this->type, 'text')) :
-                return 'text';
-            case (stristr($this->type, 'application')) :
+            case (stristr($this->type, 'application') || stristr($this->type, 'text')) :
                 return 'object';
             default :
                 return 'object';
         }
 
+    }
+
+    public function getImage(string $type = 'original')
+    {
+        return $this->base_path . $this->path . $this->file_name . '_' . $type . $this->extensionDot;
     }
 
     public function getIPObject()
@@ -121,7 +146,7 @@ class PhotoGallery extends ActiveRecord
     public static function galleryImages(?int $galleryId = 0)
     {
         if (!empty($galleryId)) {
-            return static::find()->andWhere(['gallery_id' => $galleryId])->all();
+            return static::find()->andWhere(['gallery_id' => $galleryId])->orderBy('sort ASC')->all();
         }
 
         return $galleryId;

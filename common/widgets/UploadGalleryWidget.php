@@ -8,10 +8,13 @@ use common\models\PhotoGallery;
 use common\widgets\assets\gallery\GalleryAssets;
 use kartik\file\FileInput;
 use yii\helpers\ArrayHelper;
+use yii\web\JsExpression;
 
 class UploadGalleryWidget extends FileInput
 {
     public $deleteUrl;
+
+    public $sortUrl;
 
     public function init()
     {
@@ -36,7 +39,23 @@ class UploadGalleryWidget extends FileInput
             $this->pluginOptions['initialPreviewConfig'] = $this->model->getIPCaption($this->deleteUrl);
             $this->pluginOptions['initialPreviewAsData'] = true;
             $this->pluginOptions['overwriteInitial'] = false;
+//            $this->pluginOptions['otherActionButtons'] = '<button type="button" data-toggle="modal" data-target="#openModal" class="kv-file-pencil btn btn-sm btn-kv btn-default btn-outline-secondary" {dataKey} ><i class="glyphicon glyphicon-pencil"></i></button>';//todo Добавить альт и дискрипшн картинки и МОДАЛ ОЧКА
         }
+
+        if (!empty($this->sortUrl)) {
+            $this->pluginEvents['filesorted'] = new JsExpression('function(event, params) {
+                $.ajax({
+                    url: "' . $this->sortUrl . '",
+                    type: "post",
+                    data: {
+                        objectId: params.stack[params.newIndex].key,
+                        newIndex: params.newIndex,
+                    },
+                })
+            }');
+        }
+
+
     }
 
     public function run()
