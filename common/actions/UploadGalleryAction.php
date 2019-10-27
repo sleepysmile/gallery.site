@@ -19,15 +19,13 @@ class UploadGalleryAction extends BaseGalleryAction
 
     private $galleryId;
 
-    public $deleteRoute;
-
-    public $versionImage;
-
-    public $versionVideo;
-
     private $dirPath;
 
     private $fileName;
+
+    public $deleteRoute;
+
+    public $versionImage;
 
     public function init()
     {
@@ -134,7 +132,7 @@ class UploadGalleryAction extends BaseGalleryAction
             return true;
         }
 
-        if ($file->saveAs($savePath)) {
+        if (!stristr($file->type, 'image') && $file->saveAs($savePath)) {
             return true;
         }
 
