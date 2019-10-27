@@ -10,7 +10,7 @@ use Yii;
 use yii\helpers\FileHelper;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
-//todo для видосов деление по качеству
+
 class UploadGalleryAction extends BaseGalleryAction
 {
     private $attributeName;
