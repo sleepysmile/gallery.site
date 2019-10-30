@@ -3,10 +3,7 @@
 
 namespace common\actions;
 
-
 use common\models\PhotoGallery;
-use trntv\filekit\actions\BaseAction;
-use yii\helpers\FileHelper;
 
 class DeleteGalleryAction extends BaseGalleryAction
 {

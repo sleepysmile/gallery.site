@@ -15,6 +15,7 @@ use yii\db\ActiveRecord;
  * @property int $created_by
  * @property int $created_at
  * @property int $gallery_id [bigint(20)]
+ * @property PhotoGallery $gallery
  */
 class Gallery extends ActiveRecord
 {
@@ -26,7 +27,7 @@ class Gallery extends ActiveRecord
             [
                 'class' => UploadGalleryBehaviour::class,
                 'attribute' => 'gallery',
-                'galleryIdAttribute' => 'gallery_id'
+                'galleryIdAttribute' => 'gallery_id',
             ]
         ];
     }

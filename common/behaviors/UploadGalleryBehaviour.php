@@ -17,18 +17,28 @@ class UploadGalleryBehaviour extends Behavior
 
     public $galleryIdAttribute = 'gallery_id';
 
+    public $fileStorageComponentName = 'galleryStorage';
+
     public function events()
     {
         return [
             ActiveRecord::EVENT_BEFORE_INSERT => 'beforeInsert',
             ActiveRecord::EVENT_AFTER_FIND => 'afterFind',
-            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete'
+            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete',
         ];
     }
 
     public function afterDelete()
     {
-        
+        if (!empty($this->owner->{$this->attribute})) {
+            $component = \Yii::$app->{$this->fileStorageComponentName};
+
+            foreach ($this->owner->{$this->attribute} as $file) {
+                $component->fileDelete($file->filePath);
+                $component->dirDelete($file->dirPath);
+            }
+
+        }
     }
 
     /** Устанавливает свойство модели $galleryIdAttribute */
@@ -42,7 +52,7 @@ class UploadGalleryBehaviour extends Behavior
     public function afterFind()
     {
         if (!empty($this->owner->{$this->galleryIdAttribute})) {
-            $this->owner->{$this->attribute} = PhotoGallery::galleryImages($this->owner->{$this->galleryIdAttribute});
+            $this->owner->{$this->attribute} = PhotoGallery::galleryFiles($this->owner->{$this->galleryIdAttribute});
         } else {
             $this->owner->{$this->attribute} = [];
         }

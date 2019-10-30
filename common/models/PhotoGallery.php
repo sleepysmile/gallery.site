@@ -118,9 +118,22 @@ class PhotoGallery extends ActiveRecord
 
     }
 
-    public function getImage(string $type = 'original')
+    public function getImage(string $imageType = '')
     {
-        return $this->base_path . $this->path . $this->file_name . '_' . $type . $this->extensionDot;
+        if (empty($imageType)) {
+            return $this->base_path . $this->path . $this->file_name . $this->extensionDot;
+        }
+
+        return $this->base_path . $this->path . $this->file_name . '_' . $imageType . $this->extensionDot;
+    }
+
+    public function getImagePath(string $imageType = '')
+    {
+        if (empty($imageType)) {
+            return $this->path . $this->file_name . $this->extensionDot;
+        }
+
+        return $this->path . $this->file_name . '_' . $imageType  . $this->extensionDot;
     }
 
     public function getIPObject()
@@ -143,7 +156,7 @@ class PhotoGallery extends ActiveRecord
         return $gallery_id;
     }
 
-    public static function galleryImages(?int $galleryId = 0)
+    public static function galleryFiles(?int $galleryId = 0)
     {
         if (!empty($galleryId)) {
             return static::find()->andWhere(['gallery_id' => $galleryId])->orderBy('sort ASC')->all();

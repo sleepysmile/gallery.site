@@ -26,7 +26,6 @@ use yii\helpers\Url;
             'multiple' => true,
             'class' => 'fileInput',
         ],
-        'deleteUrl' =>  Url::to(['/gallery/delete-gallery']),
         'sortUrl' => Url::to(['gallery/sort-gallery']),
         'pluginOptions' => [
             'uploadUrl' => Url::to(['/gallery/upload-gallery']),

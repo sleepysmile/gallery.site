@@ -25,7 +25,6 @@ class GalleryController extends Controller
         return [
             'upload-gallery' => [
                 'class' => UploadGalleryAction::class,
-                'deleteRoute' => Url::to(['gallery/delete-gallery']),
                 'versionImage' => [
                     'small' => function (ImageInterface $img) {
                         return $img
@@ -43,9 +42,6 @@ class GalleryController extends Controller
                             ->thumbnail(new Box(300, 300));
                     }
                 ]
-            ],
-            'delete-gallery' => [
-                'class' => DeleteGalleryAction::class
             ],
             'sort-gallery' => [
                 'class' => SortableGalleryAction::class

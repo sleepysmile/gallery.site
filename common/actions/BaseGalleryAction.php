@@ -10,14 +10,14 @@ use yii\base\Action;
 
 /** @property Storage $fileStorageGallery */
 class BaseGalleryAction extends Action
-{//todo не понятно как записывать значение
-    public $fileStorage = 'galleryStorage';
+{
+    public $fileStorageComponentName = 'galleryStorage';
 
     /**
      * @return Storage
      */
     public function getFileStorageGallery()
     {
-        return Yii::$app->{$this->fileStorage};
+        return Yii::$app->{$this->fileStorageComponentName};
     }
 }
