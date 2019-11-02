@@ -8,7 +8,10 @@ use common\models\PhotoGallery;
 use common\widgets\assets\gallery\GalleryAssets;
 use kartik\file\FileInput;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\JsExpression;
+use yii\widgets\ActiveForm;
+
 // todo попробовать сделать кнопку для alt картинки
 class UploadGalleryWidget extends FileInput
 {
@@ -34,12 +37,18 @@ class UploadGalleryWidget extends FileInput
             ]);
         }
 
+        if (empty($this->options['class'])) {
+            $this->options['class'] = 'fileInput';
+        } else {
+            $this->options['class'] = $this->options['class'] . ' fileInput';
+        }
+
         if (empty($this->pluginOptions['initialPreview']) && empty($this->pluginOptions['initialPreviewConfig'])) {
             $this->pluginOptions['initialPreview'] = $this->model->iPObject;
             $this->pluginOptions['initialPreviewConfig'] = $this->model->getIPCaption($this->pluginOptions['uploadUrl']);
             $this->pluginOptions['initialPreviewAsData'] = true;
             $this->pluginOptions['overwriteInitial'] = false;
-//            $this->pluginOptions['otherActionButtons'] = '<button type="button" data-toggle="modal" data-target="#openModal" class="kv-file-pencil btn btn-sm btn-kv btn-default btn-outline-secondary" {dataKey} ><i class="glyphicon glyphicon-pencil"></i></button>';//todo Добавить альт и дискрипшн картинки и МОДАЛ ОЧКА
+//            $this->pluginOptions['otherActionButtons'] = '<button type="button" data-toggle="modal" data-target="#openModal{key}" class="kv-file-pencil btn btn-sm btn-kv btn-default btn-outline-secondary" ><i class="glyphicon glyphicon-pencil"></i></button>';//todo Добавить альт и дискрипшн картинки и МОДАЛ ОЧКА
         }
 
         if (!empty($this->sortUrl)) {

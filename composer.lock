@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6eb1b5cb8c031c190916e452fd7310a8",
+    "content-hash": "7c3e703fa51c89d7265b7b9d95d9822c",
     "packages": [
+        {
+            "name": "2amigos/yii2-tinymce-widget",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-tinymce-widget.git",
+                "reference": "a58b7a59a1508f4251a8cea9e010d31c9733bde4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-tinymce-widget/zipball/a58b7a59a1508f4251a8cea9e010d31c9733bde4",
+                "reference": "a58b7a59a1508f4251a8cea9e010d31c9733bde4",
+                "shasum": ""
+            },
+            "require": {
+                "tinymce/tinymce": ">=4",
+                "yiisoft/yii2": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\tinymce\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TinyMCE widget for Yii2.",
+            "homepage": "http://yiiwheels.com/extension/tinymce-widget",
+            "keywords": [
+                "2amigos",
+                "extension",
+                "tinymce",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2018-11-01T20:46:52+00:00"
+        },
         {
             "name": "alexantr/yii2-elfinder",
             "version": "1.7.0",
@@ -162,7 +222,7 @@
             "version": "v1.4.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ajaxorg/ace-builds.git",
+                "url": "git@github.com:ajaxorg/ace-builds.git",
                 "reference": "c36237047e22cc3350845bc3f5b55ec062953f42"
             },
             "dist": {
@@ -180,7 +240,7 @@
             "version": "v3.16.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Canvas-to-Blob.git",
+                "url": "git@github.com:blueimp/JavaScript-Canvas-to-Blob.git",
                 "reference": "eab2845ebb03c9667ea6ade002ceadbef071c060"
             },
             "dist": {
@@ -195,7 +255,7 @@
             "version": "v9.34.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/jQuery-File-Upload.git",
+                "url": "git@github.com:blueimp/jQuery-File-Upload.git",
                 "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2"
             },
             "dist": {
@@ -234,7 +294,7 @@
             "version": "v3.13.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Templates.git",
+                "url": "git@github.com:blueimp/JavaScript-Templates.git",
                 "reference": "07b3dd455b971cf5d087fc86889fcadae48ab2fc"
             },
             "dist": {
@@ -292,7 +352,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -370,7 +430,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -3265,7 +3325,7 @@
             "version": "3.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lodash/lodash.git",
+                "url": "git@github.com:lodash/lodash.git",
                 "reference": "f11f2385a63a90ab26d6e6713478994c64c634a2"
             },
             "dist": {
@@ -4996,6 +5056,52 @@
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
             "time": "2019-09-26T21:17:10+00:00"
+        },
+        {
+            "name": "tinymce/tinymce",
+            "version": "5.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tinymce/tinymce-dist.git",
+                "reference": "782aa3876f354b8d04fbf1124c4aa440cec9d199"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/782aa3876f354b8d04fbf1124c4aa440cec9d199",
+                "reference": "782aa3876f354b8d04fbf1124c4aa440cec9d199",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "tinymce.js",
+                        "plugins/*/plugin.js",
+                        "themes/*/theme.js"
+                    ],
+                    "files": [
+                        "tinymce.min.js",
+                        "plugins/*/plugin.min.js",
+                        "themes/*/theme.min.js",
+                        "skins/**"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-only"
+            ],
+            "description": "Web based JavaScript HTML WYSIWYG editor control.",
+            "homepage": "http://www.tinymce.com",
+            "keywords": [
+                "editor",
+                "html",
+                "javascript",
+                "richtext",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "time": "2019-10-28T06:39:23+00:00"
         },
         {
             "name": "trntv/cheatsheet",

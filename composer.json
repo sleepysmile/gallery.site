@@ -53,7 +53,8 @@
     "yii2mod/yii2-swagger": "^1.1",
     "kartik-v/yii2-widget-fileinput": "dev-master",
     "paulzi/yii2-sortable": "^1.0",
-    "arogachev/yii2-sortable": "*"
+    "arogachev/yii2-sortable": "*",
+    "2amigos/yii2-tinymce-widget": "~1.1"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",

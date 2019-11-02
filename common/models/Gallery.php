@@ -16,6 +16,7 @@ use yii\db\ActiveRecord;
  * @property int $created_at
  * @property int $gallery_id [bigint(20)]
  * @property PhotoGallery $gallery
+ * @property string $text
  */
 class Gallery extends ActiveRecord
 {
@@ -46,7 +47,7 @@ class Gallery extends ActiveRecord
     public function rules()
     {
         return [
-            [['announcement'], 'string'],
+            [['announcement', 'text'], 'string'],
             [['created_by', 'created_at', 'gallery_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
             [['gallery'], 'file', 'skipOnEmpty' => true]

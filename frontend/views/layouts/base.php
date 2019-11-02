@@ -21,6 +21,7 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => Yii::t('frontend', 'Home'), 'url' => ['/site/index']],
+            ['label' => Yii::t('frontend', 'backend'), 'url' => ['@backendUrl']],
             ['label' => Yii::t('frontend', 'Gallery'), 'url' => ['/gallery/index']],
             ['label' => Yii::t('frontend', 'About'), 'url' => ['/page/view', 'slug'=>'about']],
             ['label' => Yii::t('frontend', 'Articles'), 'url' => ['/article/index']],
